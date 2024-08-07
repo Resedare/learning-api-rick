@@ -85,7 +85,7 @@ function CharacterList() {
             return (
               <Link
                 key={item.id}
-                to={`character / ${item.id}`}
+                to={`character/${item.id}`}
                 className={styles.cardLink}
               >
                 <Card className={styles.cardCharacter}>
