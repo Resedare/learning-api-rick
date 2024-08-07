@@ -36,9 +36,10 @@ function CharacterList() {
   const filters = useSelector(selectFilters);
   const page = useSelector(selectPage);
   const [visibleCount, setVisibleCount] = useState(INITIAL_LOAD);
+  const [sortedCharacters, setSortedCharacters] = useState([]);
 
-  const sortedCharacters = characters
-    ? characters.filter((character) => {
+  useEffect(() => {
+    const filteredCharacters = characters.filter((character) => {
       if (filters.species && character.species !== filters.species) {
         return false;
       }
@@ -55,14 +56,20 @@ function CharacterList() {
         return false;
       }
       return true;
-    })
-    : "";
+    });
 
+    if (filteredCharacters < visibleCount) {
+      dispatch(loadMoreCharacters());
+    }
+
+    setSortedCharacters(filteredCharacters);
+  }, [characters, filters]);
+  console.log(sortedCharacters)
   useEffect(() => {
     if (status === "idle" || status === "succeeded") {
       dispatch(fetchCharacters({ filters, page }));
     }
-  }, [dispatch, page, filters]);
+  }, [page, filters]);
 
   useEffect(() => {
     setVisibleCount(INITIAL_LOAD);
@@ -72,10 +79,9 @@ function CharacterList() {
     const newVisibleCount = visibleCount + LOAD_MORE_COUNT;
 
     setVisibleCount(newVisibleCount);
-    if (newVisibleCount < characters.length) {
-      dispatch(loadMoreCharacters());
-    }
+
   };
+  console.log(sortedCharacters)
 
   return (
     <Container>
