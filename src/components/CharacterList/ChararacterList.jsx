@@ -58,12 +58,19 @@ function CharacterList() {
       return true;
     });
 
-    if (filteredCharacters < visibleCount) {
+    const uniqueCharacters = Array.from(
+      new Set(filteredCharacters.map((item) => item.id))
+    ).map((id) => {
+      return filteredCharacters.find((item) => item.id === id);
+    });
+
+    if (uniqueCharacters.length < visibleCount) {
       dispatch(loadMoreCharacters());
     }
 
-    setSortedCharacters(filteredCharacters);
-  }, [characters, filters]);
+    setSortedCharacters(uniqueCharacters);
+
+  }, [characters, filters, dispatch]);
   console.log(sortedCharacters)
   useEffect(() => {
     if (status === "idle" || status === "succeeded") {
@@ -79,6 +86,9 @@ function CharacterList() {
     const newVisibleCount = visibleCount + LOAD_MORE_COUNT;
 
     setVisibleCount(newVisibleCount);
+    if (sortedCharacters.length <= visibleCount) {
+      dispatch(loadMoreCharacters());
+    }
 
   };
   console.log(sortedCharacters)
