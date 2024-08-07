@@ -1,0 +1,31 @@
+.topPanelCharacters {
+    margin-top: 70px;
+}
+.hero {
+    margin: 20px auto 20px;
+    display: block;
+}
+.filters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.advancedFilters {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 65px;
+}
+.filter {
+    min-width: 240px;
+}
+
+#name {
+    background-image: url('../../assets/icons/Vector.svg');
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: center;
+    padding: 35px;
+    box-sizing: inherit;
+}
+

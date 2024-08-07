@@ -1,0 +1,22 @@
+.nav {
+    font-family: "Karla", sans-serif;
+    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, .05);
+    padding: 10px 0;
+    position: relative;
+    background-color: white; 
+}
+.navInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.links {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    gap: 30px;
+}
+.link { 
+    text-decoration: none;
+    color: inherit;
+}

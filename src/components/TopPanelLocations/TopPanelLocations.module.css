@@ -1,0 +1,27 @@
+.topPanelLocations {
+    margin-top: 70px;
+}
+.hero {
+    margin: 20px auto 20px;
+    display: block;
+}
+.filter {
+    min-width: 240px;
+}
+
+.locationFilters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#nameFilter {
+    background-image: url('../../assets/icons/Vector.svg');
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: center;
+    min-width: 326px;
+    padding: 35px;
+    box-sizing: inherit;
+}
+

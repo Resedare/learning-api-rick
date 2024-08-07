@@ -1,0 +1,33 @@
+.charlist {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.cardLink {
+    text-decoration: none;
+}
+.cardCharacter {
+    width: 240px;
+    cursor: pointer;
+}
+.cardCharacter:hover {
+    border: 2px solid black;
+}
+.cardCharacter .cardCharacterContent {
+    padding: 0;
+}
+.cardCharacterImg {
+    width: 100%;
+    height: 160px;
+}
+.cardCharacterContentText {
+    padding: 10px;
+    
+}
+.cardCharacterContentText .cardCharacterName {
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: inherit;
+}
