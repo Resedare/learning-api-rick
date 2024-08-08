@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 export const fetchCharacters = createAsyncThunk(
   "characters/fetchCharacters",
@@ -10,22 +9,34 @@ export const fetchCharacters = createAsyncThunk(
       ...filters,
       page: currentPage,
     }).toString();
-    const response = await axios.get(
+    const response = await fetch(
       `https://rickandmortyapi.com/api/character/?${queryParams}`
     );
-    console.log(response);
+
+    if (!response.ok) {
+      throw new Error("Response error");
+    }
+
+    const data = await response.json();
+
     return {
-      results: response.data.results,
-      info: response.data.info,
+      results: data.results,
+      info: data.info,
     };
   }
 );
 
 export const fetchCharacter = async (id) => {
-  const response = await axios.get(
+  const response = await fetch(
     `https://rickandmortyapi.com/api/character/${id}`
   );
-  return response.data;
+
+  if (!response.ok) {
+    throw new Error("Response error");
+  }
+
+  const data = await response.json();
+  return data;
 };
 
 const initialState = {
