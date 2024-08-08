@@ -78,15 +78,16 @@ function CharacterList() {
     setVisibleCount(newVisibleCount);
 
     if (sortedCharacters.length <= visibleCount && hasMore) {
-      dispatch(loadMoreCharacters());
       dispatch(fetchCharacters({ page: page + 1, filters })).then((result) => {
         dispatch(updateCharacters(result.payload));
       });
+      dispatch(loadMoreCharacters());
+
     }
   }, [dispatch, sortedCharacters, visibleCount, hasMore, filters, page]);
 
   window.scrollTo({ top: scrollRef.current, behavior: 'smooth' });
-
+  console.log(hasMore)
   return (
     <Container className={styles.wrapper}>
       <Box>

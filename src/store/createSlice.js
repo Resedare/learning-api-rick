@@ -13,6 +13,7 @@ export const fetchCharacters = createAsyncThunk(
     const response = await axios.get(
       `https://rickandmortyapi.com/api/character/?${queryParams}`
     );
+    console.log(response);
     return {
       results: response.data.results,
       info: response.data.info,
@@ -53,7 +54,12 @@ const charactersSlice = createSlice({
   initialState,
   reducers: {
     loadMoreCharacters(state) {
+      console.log(state.page);
+      console.log(state.maxPage);
       if (state.hasMore === true && state.page < state.maxPage) {
+        state.page += 1;
+      } else if (state.page === state.maxPage) {
+        state.hasMore = true;
         state.page += 1;
       } else {
         state.hasMore = false;
@@ -126,6 +132,7 @@ const charactersSlice = createSlice({
         state.characters = [...state.characters, ...uniqueCharacters];
         state.hasMore =
           !!action.payload.info.next && state.page < state.maxPage;
+        console.log(action.payload);
         state.maxPage = action.payload.info.pages;
       })
       .addCase(fetchCharacters.rejected, (state, action) => {
