@@ -69,9 +69,6 @@ const charactersSlice = createSlice({
       console.log(state.maxPage);
       if (state.hasMore === true && state.page < state.maxPage) {
         state.page += 1;
-      } else if (state.page === state.maxPage) {
-        state.hasMore = true;
-        state.page += 1;
       } else {
         state.hasMore = false;
       }
@@ -104,8 +101,9 @@ const charactersSlice = createSlice({
         state.status = "succeeded";
         state.loadingCharacters = false;
         state.error = null;
-
+        console.log(action.payload.info.pages);
         const fetchedCharacters = action.payload.results;
+        console.log(fetchedCharacters);
         const currentSpecies = state.filters.species;
         const currentGender = state.filters.gender;
         const currentStatus = state.filters.status;
