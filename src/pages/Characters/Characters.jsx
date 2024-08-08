@@ -4,6 +4,7 @@ import "./Characters.css";
 import CharacterList from "../../components/CharacterList/ChararacterList";
 
 function Characters() {
+  console.log('проверка')
   return (
     <>
       <Nav />

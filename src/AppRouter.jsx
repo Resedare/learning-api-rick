@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Characters from "./pages/Characters/Characters";
 import Episodes from "./pages/Episodes/Episodes";
 import Locations from "./pages/Locations/Locations";
-import CharacterDetails from "./components/CharacterDetails/CharacterDetails";
+import CharacterDetails from "./pages/CharacterDetails/CharacterDetails";
 
 function AppRouter() {
   return (

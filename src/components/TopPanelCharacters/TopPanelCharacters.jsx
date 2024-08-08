@@ -16,7 +16,7 @@ import {
   fetchCharacters,
   selectAvailableFilters,
 } from "../../store/createSlice";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 
 function TopPanelCharacters() {
   const dispatch = useDispatch();
@@ -24,17 +24,16 @@ function TopPanelCharacters() {
   const availableFilters = useSelector(selectAvailableFilters);
 
   useEffect(() => {
-    dispatch(fetchCharacters({ filters }));
+    if (filters) {
+      dispatch(fetchCharacters({ filters }));
+    }
   }, [filters, dispatch]);
 
-  const handleChange = useCallback(
-    (name, value) => {
-      const newFilters = { ...filters, [name]: value };
-      dispatch(setFilters(newFilters));
-      localStorage.setItem("filters", JSON.stringify(newFilters));
-    },
-    [filters, dispatch]
-  );
+  const handleChange = (name, value) => {
+    const newFilters = { ...filters, [name]: value };
+    dispatch(setFilters(newFilters));
+    localStorage.setItem("filters", JSON.stringify(newFilters));
+  };
 
   return (
     <Container className={styles.topPanelCharacters}>
@@ -68,11 +67,13 @@ function TopPanelCharacters() {
               <MenuItem value="" sx={{ fontStyle: "italic", color: "gray" }}>
                 None
               </MenuItem>
-              {availableFilters.species.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
+              {availableFilters.species.map((item) => {
+                return (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
           <FormControl>
@@ -89,15 +90,17 @@ function TopPanelCharacters() {
               <MenuItem value="" sx={{ fontStyle: "italic", color: "gray" }}>
                 None
               </MenuItem>
-              {availableFilters.gender.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
+              {availableFilters.gender.map((item) => {
+                return (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
           <FormControl>
-            <InputLabel id="select-status">Status</InputLabel>
+            <InputLabel id="select-species">Status</InputLabel>
             <Select
               value={filters.status}
               onChange={(e) => handleChange("status", e.target.value)}
@@ -110,11 +113,13 @@ function TopPanelCharacters() {
               <MenuItem value="" sx={{ fontStyle: "italic", color: "gray" }}>
                 None
               </MenuItem>
-              {availableFilters.status.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
+              {availableFilters.status.map((item) => {
+                return (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </FormControl>
         </Box>

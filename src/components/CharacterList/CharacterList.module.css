@@ -1,5 +1,8 @@
+.wrapper {
+    padding-bottom: 70px;
+}
 .charlist {
-    padding: 20px 0;
+    padding: 20px 0 60px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -13,7 +16,7 @@
     cursor: pointer;
 }
 .cardCharacter:hover {
-    border: 2px solid black;
+    box-shadow: 0 0 5px 5px #a0a0a0c5;
 }
 .cardCharacter .cardCharacterContent {
     padding: 0;
@@ -30,4 +33,18 @@
     font-weight: 700;
     font-size: 20px;
     text-decoration: inherit;
+}
+.loadingImg {
+    display: block;
+    margin: 0 auto;
+    animation: loading 5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

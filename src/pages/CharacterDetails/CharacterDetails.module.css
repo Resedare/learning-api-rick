@@ -1,0 +1,65 @@
+.detailsTop {
+    position: relative;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.detailsHero {
+    width: 50%;
+    border-radius: 50%;
+    border: 7px solid rgba(242, 242, 247, 1)
+
+}
+.detailsTop .detailsBackButton {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    text-transform: uppercase;
+    left: 0;
+    color: inherit;
+    font-weight: 700;
+    font-size: 18px;
+}
+.detailsTop .characterName {
+    font-size: 48px;
+    color: rgba(8, 31, 50, 1);
+}
+.characterInfo {
+    display: flex;
+    text-align: start;
+    gap: 20px;
+    justify-content: space-around;
+    width: 100%;
+}
+.detailsTop .characterInfoInformationsTitle, .detailsTop .characterInfoEpisodesTitle {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: rgba(142, 142, 147, 1);
+}
+.detailsTop .characterInfoInformationsColumn {
+    display: flex;
+    flex-direction: column;
+}
+.characterInfoInformationsColumnItem {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.characterInfoInformationsColumnItem::after {
+    content: '';
+    height: 1px;
+    min-width: 340px;
+    margin: 20px 0;
+    background-color: rgba(189, 189, 189, 0.582);
+}
+.characterInfoInformationsItemTitle {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.characterInfoInformationsItemText {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(110, 121, 140, 1)
+}
